@@ -6,12 +6,10 @@
 
 /* ═══════════════════════════════════════════════════════════════
    EDITORIAL MAGAZINE DESIGN SYSTEM — IPSHITA TEWARY PORTFOLIO
-   Aesthetic: Bold Chromatic Editorial × Kinetic Typography
    ═══════════════════════════════════════════════════════════════ */
 
 @layer base {
   :root {
-    /* Core surface */
     --background: 0 0% 4%;
     --foreground: 0 0% 96%;
 
@@ -21,7 +19,6 @@
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 96%;
 
-    /* Primary: electric violet */
     --primary: 262 83% 65%;
     --primary-foreground: 0 0% 4%;
 
@@ -42,80 +39,43 @@
     --ring: 262 83% 65%;
     --radius: 0px;
 
-    /* ── Magazine color system ── */
     --ink: 0 0% 4%;
     --paper: 38 25% 94%;
-    --paper-warm: 38 20% 88%;
 
-    /* Accent palette — inspired by the reference magazines */
-    --violet: 262 83% 65%;          /* digital purple */
-    --crimson: 355 72% 54%;         /* INNOVISUAL red */
-    --amber: 38 95% 56%;            /* warm gold/tan */
-    --cyan: 188 78% 52%;            /* data teal */
+    --violet: 262 83% 65%;
+    --crimson: 355 72% 54%;
+    --amber: 38 95% 56%;
+    --cyan: 188 78% 52%;
 
     --rule-color: 0 0% 20%;
     --caption-color: 0 0% 42%;
 
-    /* Typography */
     --font-display: 'Big Shoulders Display', sans-serif;
     --font-body: 'Work Sans', sans-serif;
     --font-mono: 'DM Mono', monospace;
 
-    /* Gradients */
     --gradient-hero: linear-gradient(160deg, hsl(0 0% 3%) 0%, hsl(262 20% 7%) 60%, hsl(355 25% 7%) 100%);
-    --gradient-violet: linear-gradient(135deg, hsl(262 83% 65%), hsl(280 70% 55%));
-    --gradient-crimson: linear-gradient(135deg, hsl(355 72% 54%), hsl(20 85% 55%));
-    --gradient-amber: linear-gradient(135deg, hsl(38 95% 56%), hsl(28 90% 60%));
-    --gradient-cyan: linear-gradient(135deg, hsl(188 78% 52%), hsl(200 80% 45%));
-
-    /* Sidebar */
-    --sidebar-background: 0 0% 4%;
-    --sidebar-foreground: 0 0% 96%;
-    --sidebar-primary: 262 83% 65%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 0 0% 96%;
-    --sidebar-border: 0 0% 18%;
-    --sidebar-ring: 262 83% 65%;
   }
 }
 
 @layer base {
   * { @apply border-border; }
 
-  html { scroll-behavior: smooth; }
+  html { 
+    scroll-behavior: smooth;
+    font-size: 16px; /* ✅ FIX */
+  }
 
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    line-height: 1.6; /* ✅ FIX */
   }
 
   .font-display { font-family: var(--font-display); }
   .font-mono-custom { font-family: var(--font-mono); }
-
-  .editorial-rule {
-    height: 1px;
-    background: hsl(var(--rule-color));
-  }
-  .editorial-rule-violet { height: 2px; background: hsl(var(--violet)); }
-  .editorial-rule-crimson { height: 2px; background: hsl(var(--crimson)); }
-  .editorial-rule-amber   { height: 2px; background: hsl(var(--amber)); }
-  .editorial-rule-cyan    { height: 2px; background: hsl(var(--cyan)); }
-
-  .caption-text {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: hsl(var(--caption-color));
-  }
-
-  .label-violet { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: hsl(var(--violet)); }
-  .label-crimson { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: hsl(var(--crimson)); }
-  .label-amber   { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: hsl(var(--amber)); }
-  .label-cyan    { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: hsl(var(--cyan)); }
 
   ::selection {
     background: hsl(var(--violet));
@@ -123,112 +83,58 @@
   }
 
   ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: hsl(var(--ink)); }
   ::-webkit-scrollbar-thumb { background: hsl(var(--violet)); }
 }
 
-/* ── Scroll reveal animations ── */
+/* ── Animations (your original) ── */
 @layer utilities {
-  /* Reveal keyframes */
   @keyframes reveal-up {
     from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  @keyframes reveal-left {
-    from { opacity: 0; transform: translateX(-40px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes reveal-right {
-    from { opacity: 0; transform: translateX(40px); }
-    to   { opacity: 1; transform: translateX(0); }
-  }
-  @keyframes reveal-scale {
-    from { opacity: 0; transform: scale(0.92); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-  @keyframes line-grow {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
-  @keyframes number-pop {
-    0%   { opacity: 0; transform: scale(0.5) translateY(20px); }
-    70%  { transform: scale(1.08) translateY(-4px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
-  }
-  @keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
-  }
-  @keyframes ticker {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
-  }
 
-  .animate-reveal-up    { animation: reveal-up    0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .animate-reveal-left  { animation: reveal-left  0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .animate-reveal-right { animation: reveal-right 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .animate-reveal-scale { animation: reveal-scale 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .animate-line-grow    { animation: line-grow    0.8s cubic-bezier(0.22, 1, 0.36, 1) both; transform-origin: left; }
-  .animate-number-pop   { animation: number-pop   0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .animate-ticker       { animation: ticker 22s linear infinite; }
-  .animate-blink        { animation: blink 1.1s step-end infinite; }
+  .animate-reveal-up { animation: reveal-up 0.7s ease both; }
 
-  /* Delay utilities */
-  .delay-100 { animation-delay: 0.1s; }
-  .delay-150 { animation-delay: 0.15s; }
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-300 { animation-delay: 0.3s; }
-  .delay-400 { animation-delay: 0.4s; }
-  .delay-500 { animation-delay: 0.5s; }
-  .delay-600 { animation-delay: 0.6s; }
-  .delay-700 { animation-delay: 0.7s; }
-
-  /* Hidden until revealed */
-  .reveal-hidden { opacity: 0; }
-
-  /* Color utilities */
   .text-violet  { color: hsl(var(--violet)); }
-  .text-crimson { color: hsl(var(--crimson)); }
-  .text-amber   { color: hsl(var(--amber)); }
-  .text-cyan    { color: hsl(var(--cyan)); }
-  .text-paper   { color: hsl(var(--paper)); }
-  .text-ink     { color: hsl(var(--ink)); }
-  .text-caption { color: hsl(var(--caption-color)); }
-
-  .bg-ink    { background: hsl(var(--ink)); }
-  .bg-paper  { background: hsl(var(--paper)); }
   .bg-violet { background: hsl(var(--violet)); }
-  .bg-crimson { background: hsl(var(--crimson)); }
-  .bg-amber  { background: hsl(var(--amber)); }
-  .bg-cyan   { background: hsl(var(--cyan)); }
+}
 
-  .border-rule    { border-color: hsl(var(--rule-color)); }
-  .border-violet  { border-color: hsl(var(--violet)); }
-  .border-crimson { border-color: hsl(var(--crimson)); }
+/* ===== FINAL LAYOUT FIX (IMPORTANT) ===== */
 
-  .gradient-hero    { background: var(--gradient-hero); }
-  .gradient-violet  { background: var(--gradient-violet); }
-  .gradient-crimson { background: var(--gradient-crimson); }
-  .gradient-amber   { background: var(--gradient-amber); }
-  .gradient-cyan    { background: var(--gradient-cyan); }
+/* Center layout */
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
 
-  /* Shimmer text */
-  .text-shimmer {
-    background: linear-gradient(90deg, hsl(var(--violet)) 0%, hsl(var(--cyan)) 30%, hsl(var(--amber)) 60%, hsl(var(--violet)) 100%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite;
-  }
+/* Typography scaling */
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+}
 
-  /* Section color bar */
-  .section-tag-violet  { border-left: 3px solid hsl(var(--violet));  padding-left: 0.75rem; }
-  .section-tag-crimson { border-left: 3px solid hsl(var(--crimson)); padding-left: 0.75rem; }
-  .section-tag-amber   { border-left: 3px solid hsl(var(--amber));   padding-left: 0.75rem; }
-  .section-tag-cyan    { border-left: 3px solid hsl(var(--cyan));    padding-left: 0.75rem; }
+h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+/* Section spacing */
+section {
+  margin-bottom: 60px;
+}
+
+/* Prevent cramped layout */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
